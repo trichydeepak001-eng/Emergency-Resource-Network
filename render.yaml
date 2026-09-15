@@ -1,0 +1,32 @@
+services:
+  - type: web
+    name: emergency-resource-network
+    runtime: docker
+    plan: free
+    region: singapore
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    autoDeploy: true
+    healthCheckPath: /api/health
+    envVars:
+      - key: SPRING_DATASOURCE_URL
+        fromDatabase:
+          name: emergency-network-db
+          property: connectionString
+      - key: SPRING_DATASOURCE_USERNAME
+        fromDatabase:
+          name: emergency-network-db
+          property: user
+      - key: SPRING_DATASOURCE_PASSWORD
+        fromDatabase:
+          name: emergency-network-db
+          property: password
+      - key: JAVA_OPTS
+        value: -XX:MaxRAMPercentage=75 -XX:+UseSerialGC
+
+databases:
+  - name: emergency-network-db
+    databaseName: emergency_network
+    user: emergency_user
+    plan: free
+    region: singapore

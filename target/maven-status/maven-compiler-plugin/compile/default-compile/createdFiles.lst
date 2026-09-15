@@ -1,0 +1,15 @@
+com\emergency\network\model\Resource.class
+com\emergency\network\model\Alert.class
+com\emergency\network\service\NetworkService.class
+com\emergency\network\model\EmergencyRequest.class
+com\emergency\network\repository\ResourceRepository.class
+com\emergency\network\repository\UserRepository.class
+com\emergency\network\repository\EmergencyRequestRepository.class
+com\emergency\network\repository\AlertRepository.class
+com\emergency\network\model\ResourceType.class
+com\emergency\network\model\User.class
+com\emergency\network\model\RequestStatus.class
+com\emergency\network\EmergencyResourceNetworkApplication.class
+com\emergency\network\config\DataInitializer.class
+com\emergency\network\controller\ApiController.class
+com\emergency\network\model\ResourceStatus.class

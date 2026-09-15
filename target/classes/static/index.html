@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Emergency Resource Network</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <div class="brand"><span>✚</span> Emergency<span>Net</span></div>
+  <nav>
+    <a href="#home">Home</a><a href="#resources">Resources</a><a href="#request">Request Help</a>
+    <a href="#volunteer">Volunteer</a><a href="#admin">Admin</a>
+  </nav>
+  <button class="danger" onclick="scrollToId('request')">Need Help</button>
+</header>
+
+<main>
+<section id="home" class="hero">
+  <div>
+    <p class="eyebrow">REAL-TIME COMMUNITY RESPONSE</p>
+    <h1>Connect people to <span>life-saving resources</span>.</h1>
+    <p class="lead">A single platform for emergency requests, verified resources, volunteers and live response coordination.</p>
+    <div class="actions"><button onclick="scrollToId('request')">Request Emergency Help</button><button class="outline" onclick="scrollToId('resources')">Find Resources</button></div>
+  </div>
+  <div class="status-card">
+    <div class="pulse"></div><b>Network Status</b><strong>OPERATIONAL</strong>
+    <small>Verified resources are being monitored continuously.</small>
+  </div>
+</section>
+
+<section id="alerts" class="alerts"></section>
+
+<section class="stats">
+  <div><b id="statResources">0</b><span>Total Resources</span></div>
+  <div><b id="statAvailable">0</b><span>Available Now</span></div>
+  <div><b id="statRequests">0</b><span>Open Requests</span></div>
+  <div><b id="statVolunteers">0</b><span>Available Volunteers</span></div>
+</section>
+
+<section id="resources" class="section">
+  <div class="section-head"><div><p class="eyebrow">RESOURCE MAP</p><h2>Available Resources</h2></div>
+  <select id="typeFilter" onchange="loadResources()"><option value="">All types</option><option>BLOOD</option><option>MEDICINE</option><option>FOOD</option><option>WATER</option><option>SHELTER</option><option>AMBULANCE</option><option>VEHICLE</option><option>MEDICAL_EQUIPMENT</option><option>VOLUNTEER</option><option>OTHER</option></select></div>
+  <div id="resourceGrid" class="grid"></div>
+</section>
+
+<section id="request" class="section dark">
+  <div class="form-wrap"><div><p class="eyebrow">URGENT ASSISTANCE</p><h2>Request Emergency Help</h2><p>Submit the exact need and our network can match it with an available resource or volunteer.</p><div class="tip">⚡ For immediate life-threatening emergencies, contact your local emergency service first.</div></div>
+  <form id="requestForm" onsubmit="submitRequest(event)">
+    <input id="rqName" placeholder="Your name" required><input id="rqPhone" placeholder="Phone number" required>
+    <input id="rqTitle" placeholder="What do you need?" required>
+    <select id="rqType" required><option value="">Resource type</option><option>BLOOD</option><option>MEDICINE</option><option>FOOD</option><option>WATER</option><option>SHELTER</option><option>AMBULANCE</option><option>VEHICLE</option><option>MEDICAL_EQUIPMENT</option><option>OTHER</option></select>
+    <div class="two"><input id="rqQty" type="number" min="1" value="1" placeholder="Quantity" required><input id="rqUnit" placeholder="Unit (packs, litres, units)" required></div>
+    <select id="rqUrgency"><option>CRITICAL</option><option selected>HIGH</option><option>MEDIUM</option></select>
+    <input id="rqAddress" placeholder="Location / address" required>
+    <textarea id="rqDesc" placeholder="Describe the emergency"></textarea>
+    <button class="danger" type="submit">Submit Emergency Request</button>
+  </form></div>
+</section>
+
+<section id="volunteer" class="section">
+  <div class="form-wrap light"><div><p class="eyebrow">JOIN THE RESPONSE TEAM</p><h2>Become a Volunteer</h2><p>Register your skills and availability. Coordinators can assign you to an open emergency request.</p></div>
+  <form id="volunteerForm" onsubmit="registerVolunteer(event)">
+    <input id="vName" placeholder="Full name" required><input id="vEmail" type="email" placeholder="Email" required>
+    <input id="vPhone" placeholder="Phone" required><input id="vSkills" placeholder="Skills: First Aid, Driving..." required>
+    <button type="submit">Register as Volunteer</button>
+  </form></div>
+</section>
+
+<section id="admin" class="section admin">
+<h2>Coordinator Dashboard</h2><p>Use the demo admin login to manage resources, requests, volunteers and alerts.</p>
+<div class="login-row"><input id="adminEmail" value="admin@emergency.local"><input id="adminPassword" type="password" value="admin123"><button onclick="login()">Login</button></div>
+<div id="adminPanel" class="hidden">
+  <div class="tabs"><button onclick="showAdmin('requests')">Requests</button><button onclick="showAdmin('resources')">Add Resource</button><button onclick="showAdmin('alerts')">Broadcast Alert</button></div>
+  <div id="adminContent"></div>
+</div>
+</section>
+</main>
+<footer>EmergencyNet • Community emergency coordination platform • Demo project</footer>
+<div id="toast"></div>
+<script src="app.js"></script>
+</body></html>
