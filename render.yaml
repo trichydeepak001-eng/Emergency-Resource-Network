@@ -26,7 +26,7 @@ services:
 
 databases:
   - name: emergency-network-db
-    databaseName: emergency_network
-    user: emergency_user
+    databaseName: emergency_network_db
+    user: emergency_network_db_user
     plan: free
     region: singapore
